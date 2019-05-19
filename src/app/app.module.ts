@@ -1,5 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from'@angular/forms';
+
+//rotas
+import { AppRouting } from './app.routing';
 
 //Root
 import { AppComponent } from './app.component';
@@ -32,7 +36,9 @@ import { CartPageComponent } from './Pages/cart-page/cart-page.component';
     CartPageComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRouting,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

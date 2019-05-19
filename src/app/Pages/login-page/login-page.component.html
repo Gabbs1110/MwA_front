@@ -4,31 +4,46 @@
       <h1 class="title pacifico larger-text">
         Modern Web
       </h1>
+
       <div class="columns">
-        
+
         <div class="column is-half is-offset-one-quarter">
-          
-          <p class="control">
-            <input class="input is-large" type="text" placeholder="Usuário">
-          </p>
+          <form [formGroup]="form">
+            <p class="control">
 
-          <br>
+              <span class="tag is-danger" *ngIf="!form.controls.email.valid && !form.controls.email.pristine">Email Inválido</span>
+              <input class="input is-large" 
+              formControlName="email" 
+              type="email" 
+              placeholder="Usuário"
+              [ngClass] = "{'is-danger': (!form.controls.email.valid && !form.controls.email.pristine) }">
+              
+            </p>
 
-          <p class="control">
-            <input class="input is-large" type="password" placeholder="Senha">
-          </p>
-
-          <br>
-
-          <p>
-            <a class="button is-primary is-inverted is-outlined is-large is-fullwidth">ENTRAR</a>
             <br>
-            <a class="button is-primary is-inverted is-outlined is-large is-fullwidth">AINDA NÂO SOU CADASTRADO</a>
-          </p>
 
+            <p class="control">
+
+              <span class="tag is-danger" *ngIf="!form.controls.password.valid && !form.controls.password.pristine">Senha Inválida</span>
+              <input class="input is-large" 
+              formControlName="password" 
+              type="password" 
+              placeholder="Password"
+              [ngClass] = "{'is-danger': (!form.controls.password.valid && !form.controls.password.pristine) }">
+            </p>
+
+            <br>
+
+            <p>
+              <button [routerLink]="['/home']" class="button is-primary is-inverted is-outlined is-large is-fullwidth"
+                [disabled]="!form.valid" (click)="submit()">ENTRAR</button>
+              <br>
+              <a class="button is-primary is-inverted is-outlined is-large is-fullwidth">AINDA NÂO SOU CADASTRADO</a>
+            </p>
+          </form>
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
 </section>
